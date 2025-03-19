@@ -1,3 +1,6 @@
+require "shoulda-matchers"
+require "shoulda-context"
+
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 
@@ -12,4 +15,11 @@ if ActiveSupport::TestCase.respond_to?(:fixture_paths=)
   ActionDispatch::IntegrationTest.fixture_paths = ActiveSupport::TestCase.fixture_paths
   ActiveSupport::TestCase.file_fixture_path = File.expand_path("fixtures", __dir__) + "/files"
   ActiveSupport::TestCase.fixtures :all
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :minitest
+    with.library :rails
+  end
 end

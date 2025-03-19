@@ -1,0 +1,9 @@
+# # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# one:
+#   pub_sub_client: one
+#   pub_sub_topic: one
+
+# two:
+#   pub_sub_client: two
+#   pub_sub_topic: two

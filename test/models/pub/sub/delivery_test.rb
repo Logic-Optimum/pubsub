@@ -6,9 +6,5 @@ module Pub::Sub
       should belong_to(:client)
       should belong_to(:message)
     end
-
-    # test "the truth" do
-    #   assert true
-    # end
   end
 end

@@ -5,5 +5,11 @@ module Pub::Sub
     context "assotiations" do
       should belong_to(:client)
     end
+
+    test 'fields' do
+      subject = Key.new
+
+      assert subject.respond_to? :key
+    end
   end
 end

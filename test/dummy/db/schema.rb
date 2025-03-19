@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_19_201108) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_19_202451) do
   create_table "pub_sub_clients", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -32,6 +32,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_201108) do
     t.integer "pub_sub_client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "key"
     t.index ["pub_sub_client_id"], name: "index_pub_sub_keys_on_pub_sub_client_id"
   end
 

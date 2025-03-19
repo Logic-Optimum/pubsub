@@ -5,7 +5,8 @@ module Pub::Sub
     context "assotiations" do
       should have_many(:keys)
       should have_many(:subscriptions)
-      # should have_many(:deliveries)
+      should have_many(:deliveries)
+      should have_many(:messages)
     end
 
     test 'fields' do

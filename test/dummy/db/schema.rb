@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_19_190730) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_19_201108) do
   create_table "pub_sub_clients", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -18,11 +18,31 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_190730) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pub_sub_deliveries", force: :cascade do |t|
+    t.integer "pub_sub_message_id", null: false
+    t.integer "pub_sub_client_id", null: false
+    t.boolean "success"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pub_sub_client_id"], name: "index_pub_sub_deliveries_on_pub_sub_client_id"
+    t.index ["pub_sub_message_id"], name: "index_pub_sub_deliveries_on_pub_sub_message_id"
+  end
+
   create_table "pub_sub_keys", force: :cascade do |t|
     t.integer "pub_sub_client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pub_sub_client_id"], name: "index_pub_sub_keys_on_pub_sub_client_id"
+  end
+
+  create_table "pub_sub_messages", force: :cascade do |t|
+    t.integer "pub_sub_topic_id", null: false
+    t.integer "pub_sub_client_id", null: false
+    t.json "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pub_sub_client_id"], name: "index_pub_sub_messages_on_pub_sub_client_id"
+    t.index ["pub_sub_topic_id"], name: "index_pub_sub_messages_on_pub_sub_topic_id"
   end
 
   create_table "pub_sub_subscriptions", force: :cascade do |t|
@@ -42,7 +62,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_190730) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "pub_sub_deliveries", "pub_sub_clients"
+  add_foreign_key "pub_sub_deliveries", "pub_sub_messages"
   add_foreign_key "pub_sub_keys", "pub_sub_clients"
+  add_foreign_key "pub_sub_messages", "pub_sub_clients"
+  add_foreign_key "pub_sub_messages", "pub_sub_topics"
   add_foreign_key "pub_sub_subscriptions", "pub_sub_clients"
   add_foreign_key "pub_sub_subscriptions", "pub_sub_topics"
 end

@@ -22,7 +22,7 @@ module Pub::Sub
 private
 
     def callback_the_receiving_endpoint(delivery)
-      headers = { 'Content-Type' => 'application/json; charset=utf-8' }
+      headers = { "Content-Type" => "application/json; charset=utf-8" }
 
       url = "http://localhost:3001/pubsub/topics/1/messages"
 
@@ -30,10 +30,10 @@ private
         method: :post,
         url: delivery.callback_url,
         headers: headers,
-        payload: { payload: delivery.message.content}.to_json
+        payload: { payload: delivery.message.content }.to_json
       )
 
-      raise InvalidCallback unless ((200 <= response.code) && (300 <= response.code))
+      raise InvalidCallback unless (200 <= response.code) && (300 <= response.code)
     end
 
     def create_new_delivery(delivery)

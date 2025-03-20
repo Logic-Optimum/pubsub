@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", ">= 8.0.0.rc2"
+  spec.add_dependency "rest-client"
   spec.add_development_dependency 'shoulda-matchers', '~> 6.0'
   spec.add_development_dependency 'shoulda-context'
   spec.add_development_dependency 'debug'

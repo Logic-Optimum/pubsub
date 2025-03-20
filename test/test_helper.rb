@@ -1,5 +1,6 @@
 require "shoulda-matchers"
 require "shoulda-context"
+require "debug"
 
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"

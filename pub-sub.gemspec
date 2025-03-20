@@ -25,5 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", ">= 8.0.0.rc2"
   spec.add_development_dependency 'shoulda-matchers', '~> 6.0'
   spec.add_development_dependency 'shoulda-context'
-  spec.add_development_dependency 'factory_bot'
+  spec.add_development_dependency 'debug'
 end

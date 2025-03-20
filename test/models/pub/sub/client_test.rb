@@ -9,6 +9,11 @@ module Pub::Sub
       should have_many(:messages)
     end
 
+    context "validations" do
+      should validate_presence_of(:name)
+      should validate_presence_of(:description)
+    end
+
     test 'fields' do
       client = Client.new
 

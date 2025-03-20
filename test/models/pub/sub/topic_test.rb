@@ -7,6 +7,11 @@ module Pub::Sub
       should have_many(:subscriptions)
     end
 
+    context "validations" do
+      should validate_presence_of(:name)
+      should validate_presence_of(:description)
+    end
+
     test 'The Client Fields' do
       client = Topic.new
 

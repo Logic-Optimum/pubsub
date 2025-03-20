@@ -6,13 +6,7 @@ module Pub
 
       def create
         @topic = Topic.find params[:topic_id]
-        Messages::Create.new.(topic: @topic, content: JSON.parse(message_params[:payload]), client: @client)
-      end
-
-    private
-
-      def message_params
-        params.require(:message).permit(:payload)
+        Messages::Create.new.(topic: @topic, content: params[:message][:payload].as_json, client: @client)
       end
     end
   end

@@ -1,7 +1,7 @@
 module Pub
 	module Sub
 		class SubscriptionsController < ApplicationController
-		  before_action :authenticate
+			include Authenticate
 
 			def create
 				@topic = Topic.find params[:topic_id]
@@ -23,19 +23,6 @@ module Pub
 
 			def subscription_params
 				params.require(:subscription).permit(:callback_url, :id)
-			end
-
-			def authenticate
-	      authenticate_or_request_with_http_token do |token, options|
-	        @key = Key.find_by key: token
-
-					unless @key.present?
-		        render status: :unauthorized, json: { error: "Unauthorized" } 
-		        return false
-		      end
-
-	        @client = @key.client
-	      end
 			end
 		end
 	end

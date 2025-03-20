@@ -1,15 +1,17 @@
 module Pub
 	module Sub
 		class MessagesController < ApplicationController
+			include Authenticate
+
 			def create
-				# Calls a service object which PROCESSES as follows:
-				# - Creates the message
-				# - For every subscription belonging to the topic the message belongs to initiates a delivery as a background job:
-				#    - by default "success: nil"
-				#    - Every nil or false is TRYed to call back
-				#    - if the callback succeedes set to TRUE
-				#    - if the HTTP callback fails set to false, then reschedule another delivery 5 minutes after the failure.
-				#    - Optionally after the Nth try notify someone!!! (mail)
+				@topic = Topic.find params[:topic_id]
+				Messages::Create.new.(topic: @topic, content: JSON.parse(message_params[:payload]), client: @client)
+			end
+
+		private
+
+			def message_params
+				params.require(:message).permit(:payload)
 			end
 		end
 	end

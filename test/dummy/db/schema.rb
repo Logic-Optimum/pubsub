@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_19_202451) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_20_090548) do
   create_table "pub_sub_clients", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -24,6 +24,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_19_202451) do
     t.boolean "success"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "callback_url"
     t.index ["pub_sub_client_id"], name: "index_pub_sub_deliveries_on_pub_sub_client_id"
     t.index ["pub_sub_message_id"], name: "index_pub_sub_deliveries_on_pub_sub_message_id"
   end

@@ -2,6 +2,7 @@ module Pub
   module Sub
     class SubscriptionsController < ApplicationController
       include Authenticate
+      protect_from_forgery with: :null_session
 
       def create
         @topic = Topic.find params[:topic_id]

@@ -12,7 +12,7 @@ module Pub::Sub
       should have_many(:deliveries)
     end
 
-    test 'fields' do
+    test "fields" do
       subject = Message.new
 
       assert subject.respond_to? :content

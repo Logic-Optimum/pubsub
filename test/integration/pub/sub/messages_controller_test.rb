@@ -8,7 +8,7 @@ module Pub
         @topic = Topic.create name: "Test", description: "Test"
         @client = Client.create name: "Test Client", description: "Test Description"
         @another_client = Client.create name: "Test Client 2", description: "Test Description 2"
-        @key = Key.create key: 'TheKey', client: @client
+        @key = Key.create key: "TheKey", client: @client
         @subscription = Subscription.create topic: @topic, client: @client, callback_url: callback_url
         @another_subscription = Subscription.create topic: @topic, client: @another_client, callback_url: callback_url
       end
@@ -50,11 +50,11 @@ module Pub
     private
 
       def callback_url
-        'http://localhost:3000'
+        "http://localhost:3000"
       end
 
       def payload
-        { test: 'Test' }
+        { test: "Test" }
       end
 
       def valid_params

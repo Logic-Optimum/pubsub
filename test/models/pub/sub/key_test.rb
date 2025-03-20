@@ -10,7 +10,7 @@ module Pub::Sub
       should validate_presence_of(:key)
     end
 
-    test 'fields' do
+    test "fields" do
       subject = Key.new
 
       assert subject.respond_to? :key

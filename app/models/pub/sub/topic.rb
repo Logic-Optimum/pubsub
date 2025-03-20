@@ -8,6 +8,5 @@ module Pub::Sub
 
     validates :description,
               presence: true
-
   end
 end

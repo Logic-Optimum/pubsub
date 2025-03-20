@@ -11,7 +11,7 @@ module Pub::Sub
       should belong_to(:client)
     end
 
-    test 'fields' do
+    test "fields" do
       subject = Subscription.new
 
       assert subject.respond_to? :callback_url

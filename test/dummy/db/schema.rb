@@ -25,8 +25,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_090548) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "callback_url"
-    t.index ["pub_sub_client_id"], name: "index_pub_sub_deliveries_on_pub_sub_client_id"
-    t.index ["pub_sub_message_id"], name: "index_pub_sub_deliveries_on_pub_sub_message_id"
+    t.index [ "pub_sub_client_id" ], name: "index_pub_sub_deliveries_on_pub_sub_client_id"
+    t.index [ "pub_sub_message_id" ], name: "index_pub_sub_deliveries_on_pub_sub_message_id"
   end
 
   create_table "pub_sub_keys", force: :cascade do |t|
@@ -34,7 +34,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_090548) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "key"
-    t.index ["pub_sub_client_id"], name: "index_pub_sub_keys_on_pub_sub_client_id"
+    t.index [ "pub_sub_client_id" ], name: "index_pub_sub_keys_on_pub_sub_client_id"
   end
 
   create_table "pub_sub_messages", force: :cascade do |t|
@@ -43,8 +43,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_090548) do
     t.json "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pub_sub_client_id"], name: "index_pub_sub_messages_on_pub_sub_client_id"
-    t.index ["pub_sub_topic_id"], name: "index_pub_sub_messages_on_pub_sub_topic_id"
+    t.index [ "pub_sub_client_id" ], name: "index_pub_sub_messages_on_pub_sub_client_id"
+    t.index [ "pub_sub_topic_id" ], name: "index_pub_sub_messages_on_pub_sub_topic_id"
   end
 
   create_table "pub_sub_subscriptions", force: :cascade do |t|
@@ -53,8 +53,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_20_090548) do
     t.integer "pub_sub_topic_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pub_sub_client_id"], name: "index_pub_sub_subscriptions_on_pub_sub_client_id"
-    t.index ["pub_sub_topic_id"], name: "index_pub_sub_subscriptions_on_pub_sub_topic_id"
+    t.index [ "pub_sub_client_id" ], name: "index_pub_sub_subscriptions_on_pub_sub_client_id"
+    t.index [ "pub_sub_topic_id" ], name: "index_pub_sub_subscriptions_on_pub_sub_topic_id"
   end
 
   create_table "pub_sub_topics", force: :cascade do |t|

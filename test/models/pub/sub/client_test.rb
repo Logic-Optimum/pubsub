@@ -14,7 +14,7 @@ module Pub::Sub
       should validate_presence_of(:description)
     end
 
-    test 'fields' do
+    test "fields" do
       client = Client.new
 
       assert client.respond_to? :name

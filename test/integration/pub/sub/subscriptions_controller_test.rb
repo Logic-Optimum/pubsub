@@ -70,7 +70,7 @@ module Pub
       end
 
       def callback_url
-        'http://localhost/callback_url'
+        "http://localhost/callback_url"
       end
 
       def valid_params
@@ -78,7 +78,7 @@ module Pub
       end
 
       def key
-        @key ||= Key.create key: 'TheKey', client: client
+        @key ||= Key.create key: "TheKey", client: client
       end
 
       def client

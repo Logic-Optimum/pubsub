@@ -12,7 +12,7 @@ module Pub::Sub
       should validate_presence_of(:description)
     end
 
-    test 'The Client Fields' do
+    test "The Client Fields" do
       client = Topic.new
 
       assert client.respond_to? :name

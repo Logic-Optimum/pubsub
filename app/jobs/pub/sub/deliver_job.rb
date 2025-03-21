@@ -1,3 +1,5 @@
+require 'restclient'
+
 module Pub::Sub
   class DeliverJob < ApplicationJob
     InvalidCallback = Class.new(StandardError)
@@ -13,7 +15,7 @@ module Pub::Sub
 
       callback_the_receiving_endpoint(delivery)
       set_success(delivery)
-    rescue InvalidCallback
+    rescue
       set_failure(delivery)
       create_new_delivery(delivery)
       DeliverJob.set(wait: RETRY_WAIT_TIME).perform_later(new_delivery)
@@ -26,7 +28,7 @@ private
 
       url = "http://localhost:3001/pubsub/topics/1/messages"
 
-      response = RestClient::Request.execute(
+      response = ::RestClient::Request.execute(
         method: :post,
         url: delivery.callback_url,
         headers: headers,

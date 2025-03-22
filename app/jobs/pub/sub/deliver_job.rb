@@ -1,4 +1,4 @@
-require 'restclient'
+require "restclient"
 
 module Pub::Sub
   class DeliverJob < ApplicationJob
